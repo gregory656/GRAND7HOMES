@@ -48,12 +48,12 @@ function HeroSearchForm() {
     return (
         <form
             onSubmit={handleSearch}
-            className="rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 p-2 shadow-2xl"
+            className="rounded-2xl border border-gray-200 bg-white p-2 shadow-sm"
         >
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
                 {/* Location */}
                 <div className="flex items-center gap-3 rounded-xl bg-white px-4 py-3">
-                    <MapPin className="h-5 w-5 text-blue-500 shrink-0" />
+                    <MapPin className="h-5 w-5 text-gray-600 shrink-0" />
                     <div className="flex-1 min-w-0">
                         <label className="block text-xs font-medium text-gray-500">Destination</label>
                         <input
@@ -68,7 +68,7 @@ function HeroSearchForm() {
 
                 {/* Check-in */}
                 <div className="flex items-center gap-3 rounded-xl bg-white px-4 py-3">
-                    <Calendar className="h-5 w-5 text-blue-500 shrink-0" />
+                    <Calendar className="h-5 w-5 text-gray-600 shrink-0" />
                     <div className="flex-1 min-w-0">
                         <label className="block text-xs font-medium text-gray-500">Check-in</label>
                         <input
@@ -83,7 +83,7 @@ function HeroSearchForm() {
 
                 {/* Check-out */}
                 <div className="flex items-center gap-3 rounded-xl bg-white px-4 py-3">
-                    <Calendar className="h-5 w-5 text-blue-500 shrink-0" />
+                    <Calendar className="h-5 w-5 text-gray-600 shrink-0" />
                     <div className="flex-1 min-w-0">
                         <label className="block text-xs font-medium text-gray-500">Check-out</label>
                         <input
@@ -99,7 +99,7 @@ function HeroSearchForm() {
                 {/* Guests + Search button */}
                 <div className="flex items-center gap-2">
                     <div className="flex flex-1 items-center gap-3 rounded-xl bg-white px-4 py-3">
-                        <Users className="h-5 w-5 text-blue-500 shrink-0" />
+                        <Users className="h-5 w-5 text-gray-600 shrink-0" />
                         <div className="flex-1 min-w-0">
                             <label className="block text-xs font-medium text-gray-500">Guests</label>
                             <select
@@ -134,34 +134,24 @@ function Home() {
     })
 
     return (
-        <div className="min-h-screen bg-white dark:bg-gray-900">
+        <div className="min-h-screen bg-white">
             <Navbar />
 
             {/* ── Hero Section ─────────────────────────────────────────── */}
-            <section className="relative overflow-hidden">
-                {/* Background */}
-                <div className="absolute inset-0">
-                    <img
-                        src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600&q=90"
-                        alt="Hostel backdrop"
-                        className="h-full w-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-900/70 to-purple-900/60" />
-                </div>
-
+            <section className="relative overflow-hidden bg-white">
                 {/* Content */}
                 <div className="relative mx-auto max-w-7xl px-4 py-28 sm:px-6 lg:px-8 lg:py-36">
                     <div className="max-w-3xl">
                         {/* Tag */}
-                        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm text-white backdrop-blur-sm">
-                            <Award className="h-4 w-4 text-yellow-400" />
+                        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-4 py-1.5 text-sm text-gray-700">
+                            <Award className="h-4 w-4 text-gray-500" />
                             Kenya's #1 Hostel Booking Platform
                         </div>
                         {/* Heading */}
-                        <h1 className="text-4xl font-extrabold text-white sm:text-5xl lg:text-6xl leading-tight mb-4">
-                            Find Your Perfect <span className="text-blue-400">Hostel</span> in Kenya
+                        <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl lg:text-6xl leading-tight mb-4">
+                            Find Your Perfect <span className="text-gray-500">Hostel</span> in Kenya
                         </h1>
-                        <p className="text-lg text-blue-100 mb-10 max-w-2xl">
+                        <p className="text-lg text-gray-600 mb-10 max-w-2xl">
                             Discover budget-friendly stays, authentic experiences, and amazing communities across Kenya. Book with real reviews, real photos, and real prices.
                         </p>
 
@@ -169,14 +159,14 @@ function Home() {
                         <HeroSearchForm />
 
                         {/* Trust signals */}
-                        <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-blue-100">
+                        <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-gray-600">
                             {[
                                 { icon: Check, text: 'Best Price Guarantee' },
                                 { icon: Shield, text: 'Secure Booking' },
                                 { icon: Zap, text: 'Instant Confirmation' },
                             ].map(({ icon: Icon, text }) => (
                                 <div key={text} className="flex items-center gap-1.5">
-                                    <Icon className="h-3.5 w-3.5 text-green-400" />
+                                    <Icon className="h-3.5 w-3.5 text-gray-500" />
                                     {text}
                                 </div>
                             ))}
@@ -186,7 +176,7 @@ function Home() {
             </section>
 
             {/* ── Stats Banner ────────────────────────────────────────── */}
-            <section className="border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
+            <section className="border-b border-gray-200 bg-white">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="grid grid-cols-2 gap-8 py-10 md:grid-cols-4">
                         {[
@@ -196,8 +186,8 @@ function Home() {
                             { value: '4.8★', label: 'Average Rating' },
                         ].map(({ value, label }) => (
                             <div key={label} className="text-center">
-                                <p className="text-3xl font-extrabold text-blue-600 dark:text-blue-400">{value}</p>
-                                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{label}</p>
+                                <p className="text-3xl font-extrabold text-gray-800">{value}</p>
+                                <p className="text-sm text-gray-500 mt-1">{label}</p>
                             </div>
                         ))}
                     </div>
@@ -209,10 +199,10 @@ function Home() {
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="flex items-end justify-between mb-10">
                         <div>
-                            <p className="text-sm font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-1">Top Picks</p>
-                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Featured Hostels</h2>
+                            <p className="text-sm font-semibold uppercase tracking-wider text-gray-800 mb-1">Top Picks</p>
+                            <h2 className="text-3xl font-bold text-gray-900">Featured Hostels</h2>
                         </div>
-                        <Link to="/hostels" className="hidden sm:flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 hover:gap-2 transition-all">
+                        <Link to="/hostels" className="hidden sm:flex items-center gap-1 text-sm font-medium text-gray-800 hover:gap-2 transition-all">
                             View all <ArrowRight className="h-4 w-4" />
                         </Link>
                     </div>
@@ -220,7 +210,7 @@ function Home() {
                     <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                         {isLoading
                             ? Array.from({ length: 6 }).map((_, i) => (
-                                <div key={i} className="rounded-2xl bg-gray-100 dark:bg-gray-800 h-80 animate-pulse" />
+                                <div key={i} className="rounded-2xl bg-gray-100 h-80 animate-pulse" />
                             ))
                             : featuredHostels.slice(0, 6).map((hostel) => (
                                 <HostelCard key={hostel.id} hostel={hostel} />
@@ -237,11 +227,11 @@ function Home() {
             </section>
 
             {/* ── Popular Destinations ─────────────────────────────────── */}
-            <section className="py-20 bg-gray-50 dark:bg-gray-800/50">
+            <section className="py-20 bg-white">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
-                        <p className="text-sm font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-1">Explore Kenya</p>
-                        <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Popular Destinations</h2>
+                        <p className="text-sm font-semibold uppercase tracking-wider text-gray-800 mb-1">Explore Kenya</p>
+                        <h2 className="text-3xl font-bold text-gray-900">Popular Destinations</h2>
                     </div>
                     <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
                         {POPULAR_DESTINATIONS.map((dest) => (
@@ -270,17 +260,17 @@ function Home() {
             <section className="py-20">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-14">
-                        <p className="text-sm font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-1">Simple Process</p>
-                        <h2 className="text-3xl font-bold text-gray-900 dark:text-white">How It Works</h2>
+                        <p className="text-sm font-semibold uppercase tracking-wider text-gray-800 mb-1">Simple Process</p>
+                        <h2 className="text-3xl font-bold text-gray-900">How It Works</h2>
                     </div>
                     <div className="grid gap-8 md:grid-cols-3">
                         {HOW_IT_WORKS.map(({ step, title, description }) => (
                             <div key={step} className="text-center">
-                                <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl gradient-primary shadow-lg shadow-blue-200 dark:shadow-blue-900/30">
-                                    <span className="text-2xl font-extrabold text-white">{step}</span>
+                                <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl gradient-primary shadow-sm shadow-gray-200">
+                                    <span className="text-2xl font-extrabold text-gray-700">{step}</span>
                                 </div>
-                                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{title}</h3>
-                                <p className="text-sm text-gray-500 dark:text-gray-400 leading-relaxed">{description}</p>
+                                <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
+                                <p className="text-sm text-gray-500 leading-relaxed">{description}</p>
                             </div>
                         ))}
                     </div>
@@ -288,28 +278,28 @@ function Home() {
             </section>
 
             {/* ── Testimonials ─────────────────────────────────────────── */}
-            <section className="py-20 bg-gray-50 dark:bg-gray-800/50">
+            <section className="py-20 bg-white">
                 <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12">
-                        <p className="text-sm font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-1">Reviews</p>
-                        <h2 className="text-3xl font-bold text-gray-900 dark:text-white">What Travellers Say</h2>
+                        <p className="text-sm font-semibold uppercase tracking-wider text-gray-800 mb-1">Reviews</p>
+                        <h2 className="text-3xl font-bold text-gray-900">What Travellers Say</h2>
                     </div>
                     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                         {TESTIMONIALS.map((t) => (
-                            <div key={t.id} className="rounded-2xl bg-white p-6 shadow-sm border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+                            <div key={t.id} className="rounded-2xl bg-white p-6 shadow-sm border border-gray-200">
                                 <div className="flex gap-0.5 mb-3">
                                     {Array.from({ length: t.rating }).map((_, i) => (
-                                        <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                                        <Star key={i} className="h-4 w-4 fill-yellow-400 text-gray-500" />
                                     ))}
                                 </div>
-                                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4 line-clamp-4">"{t.text}"</p>
+                                <p className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-4">"{t.text}"</p>
                                 <div className="flex items-center gap-3">
-                                    <div className="flex h-9 w-9 items-center justify-center rounded-full gradient-primary text-sm font-bold text-white">
+                                    <div className="flex h-9 w-9 items-center justify-center rounded-full gradient-primary text-sm font-bold text-gray-700">
                                         {t.avatar}
                                     </div>
                                     <div>
-                                        <p className="text-sm font-semibold text-gray-900 dark:text-white">{t.name}</p>
-                                        <p className="text-xs text-gray-500 dark:text-gray-400">{t.country}</p>
+                                        <p className="text-sm font-semibold text-gray-900">{t.name}</p>
+                                        <p className="text-xs text-gray-500">{t.country}</p>
                                     </div>
                                 </div>
                             </div>
@@ -319,29 +309,13 @@ function Home() {
             </section>
 
             {/* ── CTA Section ──────────────────────────────────────────── */}
-            <section className="py-24 relative overflow-hidden">
-                <div className="absolute inset-0 gradient-primary opacity-90" />
-                <div className="absolute inset-0 opacity-10"
-                    style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.4\'%3E%3Ccircle cx=\'5\' cy=\'5\' r=\'1\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }}
-                />
-                <div className="relative mx-auto max-w-3xl px-4 text-center">
-                    <h2 className="text-4xl font-extrabold text-white mb-4">
-                        Ready for Your Next Adventure?
-                    </h2>
-                    <p className="text-xl text-blue-100 mb-10">
-                        Join thousands of travellers who discover Kenya's best hostels with Grand7Homes.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link to="/hostels">
-                            <Button size="xl" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 w-full sm:w-auto">
-                                Browse Hostels <ChevronRight className="h-5 w-5" />
-                            </Button>
-                        </Link>
-                        <Link to="/signup">
-                            <Button size="xl" className="bg-white text-blue-700 hover:bg-blue-50 w-full sm:w-auto">
-                                Sign Up Free
-                            </Button>
-                        </Link>
+            <section className="border-t border-gray-200 bg-white py-20">
+                <div className="mx-auto max-w-3xl px-4 text-center">
+                    <h2 className="mb-4 text-4xl font-extrabold text-gray-900">Ready for Your Next Adventure?</h2>
+                    <p className="mb-10 text-xl text-gray-600">Join thousands of travellers who discover Kenya's best hostels with Grand7Homes.</p>
+                    <div className="flex flex-col justify-center gap-4 sm:flex-row">
+                        <Link to="/hostels"><Button size="xl" variant="outline" className="w-full sm:w-auto">Browse Hostels <ChevronRight className="h-5 w-5" /></Button></Link>
+                        <Link to="/signup"><Button size="xl" className="w-full sm:w-auto">Sign Up Free</Button></Link>
                     </div>
                 </div>
             </section>

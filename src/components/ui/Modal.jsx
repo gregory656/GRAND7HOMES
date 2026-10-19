@@ -56,7 +56,7 @@ function Modal({ isOpen, onClose, title, size = 'md', children, className }) {
             {/* Modal panel */}
             <div
                 className={cn(
-                    'relative w-full rounded-2xl bg-white shadow-2xl dark:bg-gray-800 animate-fade-in',
+                    'relative w-full rounded-2xl bg-white shadow-2xl animate-fade-in',
                     sizeClasses[size],
                     className
                 )}
@@ -64,8 +64,8 @@ function Modal({ isOpen, onClose, title, size = 'md', children, className }) {
             >
                 {/* Header */}
                 {title && (
-                    <div className="flex items-center justify-between border-b border-gray-200 p-6 dark:border-gray-700">
-                        <h2 className="text-xl font-semibold text-gray-900 dark:text-white">{title}</h2>
+                    <div className="flex items-center justify-between border-b border-gray-200 p-6">
+                        <h2 className="text-xl font-semibold text-gray-900">{title}</h2>
                         <Button variant="ghost" size="icon" onClick={onClose} aria-label="Close modal">
                             <X className="h-5 w-5" />
                         </Button>

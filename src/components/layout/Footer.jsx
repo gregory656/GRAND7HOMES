@@ -13,7 +13,7 @@ function Footer() {
     const currentYear = new Date().getFullYear()
 
     return (
-        <footer className="bg-gray-900 text-gray-300">
+        <footer className="border-t border-gray-200 bg-white text-gray-600">
             {/* Main footer content */}
             <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
@@ -22,13 +22,13 @@ function Footer() {
                     <div className="lg:col-span-1">
                         <Link to="/" className="flex items-center gap-2 mb-4">
                             <div className="flex h-9 w-9 items-center justify-center rounded-xl gradient-primary">
-                                <Hotel className="h-5 w-5 text-white" />
+                                <Hotel className="h-5 w-5 text-gray-700" />
                             </div>
-                            <span className="text-xl font-bold text-white">
-                                Grand<span className="text-blue-400">7</span>Homes
+                            <span className="text-xl font-bold text-gray-900">
+                                Grand<span className="text-gray-500">7</span>Homes
                             </span>
                         </Link>
-                        <p className="text-sm leading-relaxed text-gray-400 mb-6">
+                        <p className="text-sm leading-relaxed text-gray-600 mb-6">
                             Discover amazing hostels across Kenya. Budget-friendly stays with real reviews from real travellers.
                         </p>
                         {/* Social Icons */}
@@ -43,7 +43,7 @@ function Footer() {
                                     key={label}
                                     href={href}
                                     aria-label={label}
-                                    className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-700 text-gray-400 transition-colors hover:border-blue-500 hover:text-blue-400"
+                                    className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 text-gray-500 transition-colors hover:border-gray-400 hover:text-gray-900"
                                 >
                                     <Icon className="h-4 w-4" />
                                 </a>
@@ -53,7 +53,7 @@ function Footer() {
 
                     {/* Quick Links */}
                     <div>
-                        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">Explore</h3>
+                        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-900">Explore</h3>
                         <ul className="space-y-2.5">
                             {[
                                 { label: 'Browse Hostels', to: '/hostels' },
@@ -63,7 +63,7 @@ function Footer() {
                                 { label: 'My Wishlist', to: '/user/wishlist' },
                             ].map(({ label, to }) => (
                                 <li key={label}>
-                                    <Link to={to} className="text-sm text-gray-400 hover:text-white transition-colors">
+                                    <Link to={to} className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
                                         {label}
                                     </Link>
                                 </li>
@@ -73,7 +73,7 @@ function Footer() {
 
                     {/* Customer Service */}
                     <div>
-                        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">Support</h3>
+                        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-900">Support</h3>
                         <ul className="space-y-2.5">
                             {[
                                 { label: 'Help Center', to: '#' },
@@ -83,7 +83,7 @@ function Footer() {
                                 { label: 'List Your Hostel', to: '#' },
                             ].map(({ label, to }) => (
                                 <li key={label}>
-                                    <Link to={to} className="text-sm text-gray-400 hover:text-white transition-colors">
+                                    <Link to={to} className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
                                         {label}
                                     </Link>
                                 </li>
@@ -93,21 +93,21 @@ function Footer() {
 
                     {/* Contact */}
                     <div>
-                        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">Contact</h3>
+                        <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gray-900">Contact</h3>
                         <ul className="space-y-3">
                             <li className="flex items-start gap-3">
-                                <MapPin className="h-4 w-4 mt-0.5 text-blue-400 shrink-0" />
-                                <span className="text-sm text-gray-400">Nairobi, Kenya</span>
+                                <MapPin className="h-4 w-4 mt-0.5 text-gray-600 shrink-0" />
+                                <span className="text-sm text-gray-600">Nairobi, Kenya</span>
                             </li>
                             <li className="flex items-center gap-3">
-                                <Phone className="h-4 w-4 text-blue-400 shrink-0" />
-                                <a href="tel:+254700000000" className="text-sm text-gray-400 hover:text-white transition-colors">
+                                <Phone className="h-4 w-4 text-gray-600 shrink-0" />
+                                <a href="tel:+254700000000" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
                                     +254 700 000 000
                                 </a>
                             </li>
                             <li className="flex items-center gap-3">
-                                <Mail className="h-4 w-4 text-blue-400 shrink-0" />
-                                <a href="mailto:hello@grand7homes.co.ke" className="text-sm text-gray-400 hover:text-white transition-colors">
+                                <Mail className="h-4 w-4 text-gray-600 shrink-0" />
+                                <a href="mailto:hello@grand7homes.co.ke" className="text-sm text-gray-600 hover:text-gray-900 transition-colors">
                                     hello@grand7homes.co.ke
                                 </a>
                             </li>
@@ -115,16 +115,16 @@ function Footer() {
 
                         {/* Newsletter */}
                         <div className="mt-6">
-                            <p className="text-sm font-medium text-white mb-2">Newsletter</p>
+                            <p className="text-sm font-medium text-gray-900 mb-2">Newsletter</p>
                             <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
                                 <input
                                     type="email"
                                     placeholder="Your email"
-                                    className="flex-1 rounded-lg border border-gray-700 bg-gray-800 px-3 py-2 text-sm text-gray-100 placeholder-gray-500 focus:border-blue-500 focus:outline-none"
+                                    className="flex-1 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:border-gray-900 focus:outline-none"
                                 />
                                 <button
                                     type="submit"
-                                    className="rounded-lg bg-blue-600 px-3 py-2 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
+                                    className="rounded-lg bg-gray-100 px-3 py-2 text-sm font-medium text-gray-900 hover:bg-gray-200 border border-gray-200 transition-colors"
                                 >
                                     Join
                                 </button>
@@ -135,7 +135,7 @@ function Footer() {
             </div>
 
             {/* Bottom bar */}
-            <div className="border-t border-gray-800">
+            <div className="border-t border-gray-200">
                 <div className="mx-auto max-w-7xl px-4 py-5 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2">
                     <p className="text-xs text-gray-500">
                         © {currentYear} Grand7Homes. All rights reserved.

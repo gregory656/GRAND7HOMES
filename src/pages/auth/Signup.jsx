@@ -53,25 +53,25 @@ function Signup() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center px-4 py-12">
+        <div className="min-h-screen bg-white flex items-center justify-center px-4 py-12">
             <div className="w-full max-w-md">
                 {/* Logo */}
                 <div className="text-center mb-8">
                     <Link to="/" className="inline-flex items-center gap-2">
                         <div className="flex h-10 w-10 items-center justify-center rounded-xl gradient-primary">
-                            <Hotel className="h-6 w-6 text-white" />
+                            <Hotel className="h-6 w-6 text-gray-700" />
                         </div>
-                        <span className="text-2xl font-bold text-gray-900 dark:text-white">
+                        <span className="text-2xl font-bold text-gray-900">
                             Grand<span className="text-gradient">7</span>Homes
                         </span>
                     </Link>
-                    <h1 className="mt-6 text-2xl font-bold text-gray-900 dark:text-white">Create your account</h1>
-                    <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">Start booking amazing hostels in Kenya</p>
+                    <h1 className="mt-6 text-2xl font-bold text-gray-900">Create your account</h1>
+                    <p className="mt-1 text-sm text-gray-500">Start booking amazing hostels in Kenya</p>
                 </div>
 
-                <div className="rounded-2xl bg-white border border-gray-200 shadow-xl p-8 dark:bg-gray-800 dark:border-gray-700">
+                <div className="rounded-2xl bg-white border border-gray-200 shadow-xl p-8">
                     {apiError && (
-                        <div className="mb-4 rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-600 dark:bg-red-900/20 dark:text-red-400">
+                        <div className="mb-4 rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-600">
                             {apiError}
                         </div>
                     )}
@@ -94,7 +94,7 @@ function Signup() {
                                 <div className="flex items-center gap-2">
                                     <div className="flex gap-1 flex-1">
                                         {[1, 2, 3].map((i) => (
-                                            <div key={i} className={`h-1 flex-1 rounded-full transition-colors ${i <= strength ? strengthColors[strength] : 'bg-gray-200 dark:bg-gray-700'}`} />
+                                            <div key={i} className={`h-1 flex-1 rounded-full transition-colors ${i <= strength ? strengthColors[strength] : 'bg-gray-200'}`} />
                                         ))}
                                     </div>
                                     <span className={`text-xs font-medium ${strength === 1 ? 'text-red-500' : strength === 2 ? 'text-yellow-500' : 'text-green-500'}`}>
@@ -102,7 +102,7 @@ function Signup() {
                                     </span>
                                 </div>
                             )}
-                            <button type="button" onClick={() => setShowPwd(!showPwd)} className="flex items-center gap-1 text-xs text-gray-500 hover:text-blue-600 transition-colors">
+                            <button type="button" onClick={() => setShowPwd(!showPwd)} className="flex items-center gap-1 text-xs text-gray-500 hover:text-gray-800 transition-colors">
                                 {showPwd ? <EyeOff className="h-3.5 w-3.5" /> : <Eye className="h-3.5 w-3.5" />}
                                 {showPwd ? 'Hide' : 'Show'} password
                             </button>
@@ -111,12 +111,12 @@ function Signup() {
                         <Input label="Confirm Password" type="password" placeholder="Re-enter password" leftIcon={<Lock className="h-4 w-4" />} error={errors.confirmPassword?.message} {...register('confirmPassword')} />
 
                         <label className="flex items-start gap-2 cursor-pointer">
-                            <input type="checkbox" className="mt-0.5 rounded text-blue-600" {...register('terms')} />
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
+                            <input type="checkbox" className="mt-0.5 rounded text-gray-800" {...register('terms')} />
+                            <span className="text-sm text-gray-600">
                                 I agree to the{' '}
-                                <Link to="#" className="text-blue-600 dark:text-blue-400 hover:underline">Terms of Service</Link>
+                                <Link to="#" className="text-gray-800 hover:underline">Terms of Service</Link>
                                 {' '}and{' '}
-                                <Link to="#" className="text-blue-600 dark:text-blue-400 hover:underline">Privacy Policy</Link>
+                                <Link to="#" className="text-gray-800 hover:underline">Privacy Policy</Link>
                             </span>
                         </label>
                         {errors.terms && <p className="text-xs text-red-500">{errors.terms.message}</p>}
@@ -126,9 +126,9 @@ function Signup() {
                         </Button>
                     </form>
 
-                    <p className="mt-6 text-center text-sm text-gray-500 dark:text-gray-400">
+                    <p className="mt-6 text-center text-sm text-gray-500">
                         Already have an account?{' '}
-                        <Link to="/login" className="font-medium text-blue-600 dark:text-blue-400 hover:underline">Sign in</Link>
+                        <Link to="/login" className="font-medium text-gray-800 hover:underline">Sign in</Link>
                     </p>
                 </div>
             </div>

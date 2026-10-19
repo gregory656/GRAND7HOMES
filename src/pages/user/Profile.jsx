@@ -52,8 +52,8 @@ function Profile() {
     return (
         <UserLayout>
             <div className="mb-6">
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">My Profile</h1>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Manage your personal information and preferences</p>
+                <h1 className="text-2xl font-bold text-gray-900">My Profile</h1>
+                <p className="text-sm text-gray-500 mt-1">Manage your personal information and preferences</p>
             </div>
 
             {/* Avatar */}
@@ -61,17 +61,17 @@ function Profile() {
                 <CardContent className="py-5">
                     <div className="flex items-center gap-5">
                         <div className="relative">
-                            <div className="flex h-20 w-20 items-center justify-center rounded-full gradient-primary text-2xl font-bold text-white">
+                            <div className="flex h-20 w-20 items-center justify-center rounded-full gradient-primary text-2xl font-bold text-gray-700">
                                 {user?.name?.charAt(0).toUpperCase()}
                             </div>
-                            <button className="absolute bottom-0 right-0 flex h-7 w-7 items-center justify-center rounded-full bg-blue-600 text-white shadow-md hover:bg-blue-700">
+                            <button className="absolute bottom-0 right-0 flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 text-gray-700 shadow-sm hover:bg-gray-200 border border-gray-200">
                                 <Camera className="h-3.5 w-3.5" />
                             </button>
                         </div>
                         <div>
-                            <p className="font-bold text-gray-900 dark:text-white text-lg">{user?.name}</p>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">{user?.email}</p>
-                            <p className="text-xs text-blue-600 dark:text-blue-400 mt-1">Member since 2024</p>
+                            <p className="font-bold text-gray-900 text-lg">{user?.name}</p>
+                            <p className="text-sm text-gray-500">{user?.email}</p>
+                            <p className="text-xs text-gray-800 mt-1">Member since 2024</p>
                         </div>
                     </div>
                 </CardContent>
@@ -90,22 +90,22 @@ function Profile() {
                         <Input label="Phone Number" placeholder="+254 700 000 000" {...profileForm.register('phone')} />
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Nationality</label>
-                                <select className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:outline-none" {...profileForm.register('nationality')}>
+                                <label className="block text-sm font-medium text-gray-700 mb-1.5">Nationality</label>
+                                <select className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none" {...profileForm.register('nationality')}>
                                     {['Kenyan', 'Ugandan', 'Tanzanian', 'British', 'American', 'German', 'Other'].map((n) => (
                                         <option key={n}>{n}</option>
                                     ))}
                                 </select>
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Language</label>
-                                <select className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:outline-none" {...profileForm.register('language')}>
+                                <label className="block text-sm font-medium text-gray-700 mb-1.5">Language</label>
+                                <select className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none" {...profileForm.register('language')}>
                                     {['English', 'Swahili', 'French', 'German', 'Spanish'].map((l) => <option key={l}>{l}</option>)}
                                 </select>
                             </div>
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Currency</label>
-                                <select className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:outline-none" {...profileForm.register('currency')}>
+                                <label className="block text-sm font-medium text-gray-700 mb-1.5">Currency</label>
+                                <select className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none" {...profileForm.register('currency')}>
                                     {['KES', 'USD', 'EUR', 'GBP'].map((c) => <option key={c}>{c}</option>)}
                                 </select>
                             </div>

@@ -50,19 +50,19 @@ function StepIndicator({ step }) {
         <div className="flex items-center justify-center mb-10">
             {steps.map((s, i) => (
                 <div key={s.id} className="flex items-center">
-                    <div className={`flex items-center gap-2 ${step >= s.id ? 'text-blue-600 dark:text-blue-400' : 'text-gray-400'}`}>
-                        <div className={`flex h-9 w-9 items-center justify-center rounded-full border-2 transition-all ${step > s.id ? 'border-blue-600 bg-blue-600 dark:border-blue-400 dark:bg-blue-400' :
-                                step === s.id ? 'border-blue-600 dark:border-blue-400' : 'border-gray-300'
+                    <div className={`flex items-center gap-2 ${step >= s.id ? 'text-gray-800' : 'text-gray-400'}`}>
+                        <div className={`flex h-9 w-9 items-center justify-center rounded-full border-2 transition-all ${step > s.id ? 'border-gray-300 bg-gray-300' :
+                                step === s.id ? 'border-gray-800' : 'border-gray-300'
                             }`}>
                             {step > s.id
-                                ? <Check className="h-4 w-4 text-white" />
-                                : <s.icon className={`h-4 w-4 ${step === s.id ? 'text-blue-600 dark:text-blue-400' : 'text-gray-400'}`} />
+                                ? <Check className="h-4 w-4 text-gray-700" />
+                                : <s.icon className={`h-4 w-4 ${step === s.id ? 'text-gray-800' : 'text-gray-400'}`} />
                             }
                         </div>
                         <span className={`hidden sm:block text-sm font-medium ${step >= s.id ? '' : 'text-gray-400'}`}>{s.label}</span>
                     </div>
                     {i < steps.length - 1 && (
-                        <div className={`mx-3 h-0.5 w-12 sm:w-20 transition-colors ${step > s.id ? 'bg-blue-600' : 'bg-gray-200'}`} />
+                        <div className={`mx-3 h-0.5 w-12 sm:w-20 transition-colors ${step > s.id ? 'bg-gray-300' : 'bg-gray-200'}`} />
                     )}
                 </div>
             ))}
@@ -119,11 +119,11 @@ function Checkout() {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+        <div className="min-h-screen bg-white">
             <Navbar />
             <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-2">Checkout</h1>
-                <p className="text-sm text-gray-500 dark:text-gray-400 text-center mb-8">Complete your booking securely</p>
+                <h1 className="text-2xl font-bold text-gray-900 text-center mb-2">Checkout</h1>
+                <p className="text-sm text-gray-500 text-center mb-8">Complete your booking securely</p>
 
                 <StepIndicator step={step} />
 
@@ -132,8 +132,8 @@ function Checkout() {
                     <div className="flex-1">
                         {/* ── Step 1: Guest Information ── */}
                         {step === 1 && (
-                            <div className="rounded-2xl bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700 p-6 animate-fade-in">
-                                <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-5">Guest Information</h2>
+                            <div className="rounded-2xl bg-white border border-gray-200 p-6 animate-fade-in">
+                                <h2 className="text-lg font-bold text-gray-900 mb-5">Guest Information</h2>
                                 <form onSubmit={guestForm.handleSubmit(onGuestSubmit)} className="space-y-4">
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                         <Input label="First Name" placeholder="John" error={guestForm.formState.errors.firstName?.message} {...guestForm.register('firstName')} />
@@ -142,10 +142,10 @@ function Checkout() {
                                     <Input label="Email Address" type="email" placeholder="john@example.com" error={guestForm.formState.errors.email?.message} {...guestForm.register('email')} />
                                     <Input label="Phone Number" type="tel" placeholder="+254 700 000 000" error={guestForm.formState.errors.phone?.message} {...guestForm.register('phone')} />
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">Special Requests (optional)</label>
+                                        <label className="block text-sm font-medium text-gray-700 mb-1.5">Special Requests (optional)</label>
                                         <textarea
                                             placeholder="e.g. Late check-in, dietary requirements..."
-                                            className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100 min-h-[80px]"
+                                            className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-600/20 min-h-[80px]"
                                             {...guestForm.register('specialRequests')}
                                         />
                                     </div>
@@ -156,8 +156,8 @@ function Checkout() {
 
                         {/* ── Step 2: Payment ── */}
                         {step === 2 && (
-                            <div className="rounded-2xl bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700 p-6 animate-fade-in">
-                                <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-5">Payment Method</h2>
+                            <div className="rounded-2xl bg-white border border-gray-200 p-6 animate-fade-in">
+                                <h2 className="text-lg font-bold text-gray-900 mb-5">Payment Method</h2>
 
                                 {/* Payment Method Selector */}
                                 <div className="grid grid-cols-3 gap-3 mb-6">
@@ -169,11 +169,11 @@ function Checkout() {
                                         <button
                                             key={m.id}
                                             onClick={() => setPayMethod(m.id)}
-                                            className={`rounded-xl border-2 p-3 text-center transition-all ${payMethod === m.id ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/10' : 'border-gray-200 dark:border-gray-700 hover:border-gray-300'
+                                            className={`rounded-xl border-2 p-3 text-center transition-all ${payMethod === m.id ? 'border-gray-600 bg-gray-50' : 'border-gray-200 hover:border-gray-300'
                                                 }`}
                                         >
                                             <div className="text-2xl mb-1">{m.emoji}</div>
-                                            <p className="text-xs font-medium text-gray-700 dark:text-gray-300">{m.label}</p>
+                                            <p className="text-xs font-medium text-gray-700">{m.label}</p>
                                         </button>
                                     ))}
                                 </div>
@@ -193,7 +193,7 @@ function Checkout() {
                                     <Input label="M-Pesa Phone Number" placeholder="+254 700 000 000" {...payForm.register('mpesaPhone')} />
                                 )}
                                 {payMethod === 'paypal' && (
-                                    <div className="rounded-xl bg-blue-50 dark:bg-blue-900/10 p-4 text-center text-sm text-gray-600 dark:text-gray-400">
+                                    <div className="rounded-xl bg-gray-50 p-4 text-center text-sm text-gray-600">
                                         You will be redirected to PayPal to complete your payment securely.
                                     </div>
                                 )}
@@ -209,21 +209,21 @@ function Checkout() {
 
                         {/* ── Step 3: Confirmation ── */}
                         {step === 3 && (
-                            <div className="rounded-2xl bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700 p-8 text-center animate-fade-in">
-                                <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/20">
+                            <div className="rounded-2xl bg-white border border-gray-200 p-8 text-center animate-fade-in">
+                                <div className="mx-auto mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
                                     <CheckCircle className="h-10 w-10 text-green-500" />
                                 </div>
-                                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Booking Confirmed!</h2>
-                                <p className="text-gray-500 dark:text-gray-400 mb-6">
+                                <h2 className="text-2xl font-bold text-gray-900 mb-2">Booking Confirmed!</h2>
+                                <p className="text-gray-500 mb-6">
                                     Your booking is confirmed. A confirmation email has been sent to {guestData?.email}.
                                 </p>
                                 {/* Reference No */}
-                                <div className="inline-flex items-center gap-3 rounded-xl bg-blue-50 dark:bg-blue-900/20 px-5 py-3 mb-6">
+                                <div className="inline-flex items-center gap-3 rounded-xl bg-gray-50 px-5 py-3 mb-6">
                                     <div>
-                                        <p className="text-xs text-gray-500 dark:text-gray-400">Booking Reference</p>
-                                        <p className="text-lg font-bold text-blue-600 dark:text-blue-400">{bookingRef}</p>
+                                        <p className="text-xs text-gray-500">Booking Reference</p>
+                                        <p className="text-lg font-bold text-gray-800">{bookingRef}</p>
                                     </div>
-                                    <button onClick={copyRef} className="text-gray-400 hover:text-blue-600 transition-colors">
+                                    <button onClick={copyRef} className="text-gray-400 hover:text-gray-800 transition-colors">
                                         <Copy className="h-4 w-4" />
                                     </button>
                                     {copied && <span className="text-xs text-green-500">Copied!</span>}
@@ -239,30 +239,30 @@ function Checkout() {
                     {/* Order Summary Sidebar */}
                     {step < 3 && (
                         <div className="lg:w-72 xl:w-80 shrink-0">
-                            <div className="rounded-2xl bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700 p-5 sticky top-20">
-                                <h3 className="font-bold text-gray-900 dark:text-white mb-4">Order Summary</h3>
+                            <div className="rounded-2xl bg-white border border-gray-200 p-5 sticky top-20">
+                                <h3 className="font-bold text-gray-900 mb-4">Order Summary</h3>
                                 {bookingItems.map((item) => (
                                     <div key={item.id} className="flex items-center gap-3 mb-3">
                                         <img src={item.hostelImage} alt="" className="h-12 w-12 rounded-lg object-cover shrink-0" />
                                         <div className="flex-1 min-w-0">
-                                            <p className="text-xs font-medium text-gray-900 dark:text-white truncate">{item.hostelName}</p>
-                                            <p className="text-xs text-gray-500 dark:text-gray-400">{item.nights} nights · {item.roomType?.name}</p>
+                                            <p className="text-xs font-medium text-gray-900 truncate">{item.hostelName}</p>
+                                            <p className="text-xs text-gray-500">{item.nights} nights · {item.roomType?.name}</p>
                                         </div>
-                                        <p className="text-xs font-bold text-gray-900 dark:text-white shrink-0">{formatPrice(item.totalPrice)}</p>
+                                        <p className="text-xs font-bold text-gray-900 shrink-0">{formatPrice(item.totalPrice)}</p>
                                     </div>
                                 ))}
-                                <div className="border-t border-gray-200 dark:border-gray-700 pt-3 mt-3 space-y-1.5">
-                                    <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400">
+                                <div className="border-t border-gray-200 pt-3 mt-3 space-y-1.5">
+                                    <div className="flex justify-between text-xs text-gray-500">
                                         <span>Subtotal</span><span>{formatPrice(subtotal)}</span>
                                     </div>
-                                    <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400">
+                                    <div className="flex justify-between text-xs text-gray-500">
                                         <span>Taxes</span><span>{formatPrice(taxes)}</span>
                                     </div>
-                                    <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400">
+                                    <div className="flex justify-between text-xs text-gray-500">
                                         <span>Service fee</span><span>{formatPrice(serviceFee)}</span>
                                     </div>
-                                    <div className="flex justify-between font-bold text-gray-900 dark:text-white mt-2 pt-2 border-t border-gray-200 dark:border-gray-700">
-                                        <span>Total</span><span className="text-blue-600 dark:text-blue-400">{formatPrice(total)}</span>
+                                    <div className="flex justify-between font-bold text-gray-900 mt-2 pt-2 border-t border-gray-200">
+                                        <span>Total</span><span className="text-gray-800">{formatPrice(total)}</span>
                                     </div>
                                 </div>
                             </div>

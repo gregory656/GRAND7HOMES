@@ -287,7 +287,7 @@ export const NAV_LINKS = [
 // ─── Booking Status Colors ───────────────────────────────────────────────────
 export const STATUS_COLORS = {
     confirmed: { bg: 'bg-green-100', text: 'text-green-800', label: 'Confirmed' },
-    upcoming: { bg: 'bg-blue-100', text: 'text-blue-800', label: 'Upcoming' },
+    upcoming: { bg: 'bg-gray-100', text: 'text-gray-900', label: 'Upcoming' },
     completed: { bg: 'bg-gray-100', text: 'text-gray-800', label: 'Completed' },
     cancelled: { bg: 'bg-red-100', text: 'text-red-800', label: 'Cancelled' },
     pending: { bg: 'bg-yellow-100', text: 'text-yellow-800', label: 'Pending' },

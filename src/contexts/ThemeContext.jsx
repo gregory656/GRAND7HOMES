@@ -4,7 +4,7 @@
  * Applies the 'dark' class to the document root element for Tailwind dark mode.
  */
 
-import { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useContext, useEffect } from 'react'
 
 // Create the context
 const ThemeContext = createContext(null)
@@ -14,40 +14,23 @@ const ThemeContext = createContext(null)
  * @param {React.ReactNode} children
  */
 export function ThemeProvider({ children }) {
-    // Initialize theme from localStorage or system preference
-    const [theme, setTheme] = useState(() => {
-        const stored = localStorage.getItem('theme')
-        if (stored) return stored
-        // Check system preference
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-    })
+    // Keep the application in a light theme regardless of saved or system preferences.
+    const theme = 'light'
 
-    // Apply theme class to the document root (used by Tailwind's dark: variant)
     useEffect(() => {
-        const root = document.documentElement
-        if (theme === 'dark') {
-            root.classList.add('dark')
-        } else {
-            root.classList.remove('dark')
-        }
-        localStorage.setItem('theme', theme)
-    }, [theme])
+        document.documentElement.classList.remove('dark')
+        localStorage.setItem('theme', 'light')
+    }, [])
 
-    /**
-     * Toggle between light and dark theme.
-     */
     const toggleTheme = () => {
-        setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))
+        document.documentElement.classList.remove('dark')
+        localStorage.setItem('theme', 'light')
     }
 
-    /**
-     * Set a specific theme.
-     * @param {'light'|'dark'} newTheme
-     */
-    const setSpecificTheme = (newTheme) => {
-        setTheme(newTheme)
+    const setSpecificTheme = () => {
+        document.documentElement.classList.remove('dark')
+        localStorage.setItem('theme', 'light')
     }
-
     const value = {
         theme,
         isDark: theme === 'dark',

@@ -28,34 +28,34 @@ function ForgotPassword() {
     }
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex items-center justify-center px-4">
+        <div className="min-h-screen bg-white flex items-center justify-center px-4">
             <div className="w-full max-w-md">
                 {/* Logo */}
                 <div className="text-center mb-8">
                     <Link to="/" className="inline-flex items-center gap-2">
                         <div className="flex h-10 w-10 items-center justify-center rounded-xl gradient-primary">
-                            <Hotel className="h-6 w-6 text-white" />
+                            <Hotel className="h-6 w-6 text-gray-700" />
                         </div>
-                        <span className="text-2xl font-bold text-gray-900 dark:text-white">Grand<span className="text-gradient">7</span>Homes</span>
+                        <span className="text-2xl font-bold text-gray-900">Grand<span className="text-gradient">7</span>Homes</span>
                     </Link>
                 </div>
 
-                <div className="rounded-2xl bg-white border border-gray-200 shadow-xl p-8 dark:bg-gray-800 dark:border-gray-700">
+                <div className="rounded-2xl bg-white border border-gray-200 shadow-xl p-8">
                     {submitted ? (
                         <div className="text-center">
-                            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/20">
+                            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
                                 <CheckCircle className="h-8 w-8 text-green-500" />
                             </div>
-                            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Check your email</h2>
-                            <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+                            <h2 className="text-xl font-bold text-gray-900 mb-2">Check your email</h2>
+                            <p className="text-sm text-gray-500 mb-6">
                                 We've sent a password reset link to <strong>{submittedEmail}</strong>. Check your inbox and follow the instructions.
                             </p>
                             <Link to="/login"><Button variant="outline" className="w-full"><ArrowLeft className="h-4 w-4" />Back to Login</Button></Link>
                         </div>
                     ) : (
                         <>
-                            <h1 className="text-xl font-bold text-gray-900 dark:text-white mb-1">Forgot your password?</h1>
-                            <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
+                            <h1 className="text-xl font-bold text-gray-900 mb-1">Forgot your password?</h1>
+                            <p className="text-sm text-gray-500 mb-6">
                                 Enter your email address and we'll send you a link to reset your password.
                             </p>
                             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
@@ -64,7 +64,7 @@ function ForgotPassword() {
                                     {isSubmitting ? 'Sending…' : 'Send Reset Link'}
                                 </Button>
                             </form>
-                            <Link to="/login" className="mt-5 flex items-center justify-center gap-1 text-sm text-gray-500 dark:text-gray-400 hover:text-blue-600 transition-colors">
+                            <Link to="/login" className="mt-5 flex items-center justify-center gap-1 text-sm text-gray-500 hover:text-gray-800 transition-colors">
                                 <ArrowLeft className="h-4 w-4" />Back to Login
                             </Link>
                         </>

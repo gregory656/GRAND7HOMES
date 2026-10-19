@@ -78,18 +78,18 @@ function Hostels() {
     const hasActiveFilters = filters.location || filters.minPrice || filters.maxPrice || filters.rating || filters.category || filters.amenities.length
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+        <div className="min-h-screen bg-white">
             <Navbar />
 
             {/* Page Header */}
-            <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+            <div className="bg-white border-b border-gray-200">
                 <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                         <div>
-                            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+                            <h1 className="text-2xl font-bold text-gray-900">
                                 {filters.location ? `Hostels in ${filters.location}` : 'All Hostels'}
                             </h1>
-                            <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">
+                            <p className="text-sm text-gray-500 mt-0.5">
                                 {isLoading ? 'Searching…' : `${hostels.length} hostel${hostels.length !== 1 ? 's' : ''} found`}
                             </p>
                         </div>
@@ -98,7 +98,7 @@ function Hostels() {
                             <select
                                 value={filters.sortBy}
                                 onChange={(e) => updateFilter('sortBy', e.target.value)}
-                                className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 focus:outline-none"
+                                className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-700 focus:outline-none"
                             >
                                 {SORT_OPTIONS.map((opt) => (
                                     <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -122,9 +122,9 @@ function Hostels() {
 
                     {/* Filter Sidebar */}
                     <aside className={`${showFilters ? 'block' : 'hidden'} md:block w-full md:w-64 shrink-0`}>
-                        <div className="rounded-xl bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700 p-5 sticky top-20 space-y-6">
+                        <div className="rounded-xl bg-white border border-gray-200 p-5 sticky top-20 space-y-6">
                             <div className="flex items-center justify-between">
-                                <h2 className="font-semibold text-gray-900 dark:text-white">Filters</h2>
+                                <h2 className="font-semibold text-gray-900">Filters</h2>
                                 {hasActiveFilters && (
                                     <button onClick={clearFilters} className="text-xs text-red-500 hover:underline flex items-center gap-1">
                                         <X className="h-3 w-3" />Clear all
@@ -134,14 +134,14 @@ function Hostels() {
 
                             {/* Location Search */}
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Location</label>
+                                <label className="block text-sm font-medium text-gray-700 mb-2">Location</label>
                                 <form onSubmit={handleLocationSearch} className="flex gap-2">
                                     <input
                                         type="text"
                                         value={searchInput}
                                         onChange={(e) => setSearchInput(e.target.value)}
                                         placeholder="City or area..."
-                                        className="flex-1 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:outline-none focus:border-blue-500"
+                                        className="flex-1 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:border-gray-600"
                                     />
                                     <Button type="submit" size="icon" className="shrink-0"><Search className="h-4 w-4" /></Button>
                                 </form>
@@ -149,36 +149,36 @@ function Hostels() {
 
                             {/* Price Range */}
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Price / Night (KES)</label>
+                                <label className="block text-sm font-medium text-gray-700 mb-2">Price / Night (KES)</label>
                                 <div className="flex gap-2">
                                     <input
                                         type="number"
                                         placeholder="Min"
                                         value={filters.minPrice}
                                         onChange={(e) => updateFilter('minPrice', e.target.value ? Number(e.target.value) : '')}
-                                        className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:outline-none"
+                                        className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none"
                                     />
                                     <input
                                         type="number"
                                         placeholder="Max"
                                         value={filters.maxPrice}
                                         onChange={(e) => updateFilter('maxPrice', e.target.value ? Number(e.target.value) : '')}
-                                        className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 focus:outline-none"
+                                        className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none"
                                     />
                                 </div>
                             </div>
 
                             {/* Minimum Rating */}
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Min Rating</label>
+                                <label className="block text-sm font-medium text-gray-700 mb-2">Min Rating</label>
                                 <div className="flex gap-2">
                                     {[3, 3.5, 4, 4.5].map((r) => (
                                         <button
                                             key={r}
                                             onClick={() => updateFilter('rating', filters.rating === r ? '' : r)}
                                             className={`flex-1 rounded-lg border py-1.5 text-xs font-medium transition-colors ${filters.rating === r
-                                                    ? 'border-blue-500 bg-blue-50 text-blue-600 dark:bg-blue-900/20'
-                                                    : 'border-gray-300 text-gray-600 hover:border-gray-400 dark:border-gray-600 dark:text-gray-400'
+                                                    ? 'border-gray-600 bg-gray-50 text-gray-800'
+                                                    : 'border-gray-300 text-gray-600 hover:border-gray-400'
                                                 }`}
                                         >
                                             {r}+
@@ -189,7 +189,7 @@ function Hostels() {
 
                             {/* Category */}
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Category</label>
+                                <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
                                 <div className="space-y-2">
                                     {CATEGORIES.map((cat) => (
                                         <label key={cat} className="flex items-center gap-2.5 cursor-pointer">
@@ -199,9 +199,9 @@ function Hostels() {
                                                 value={cat}
                                                 checked={filters.category === cat}
                                                 onChange={() => updateFilter('category', filters.category === cat ? '' : cat)}
-                                                className="text-blue-600"
+                                                className="text-gray-800"
                                             />
-                                            <span className="text-sm text-gray-700 dark:text-gray-300">{cat}</span>
+                                            <span className="text-sm text-gray-700">{cat}</span>
                                         </label>
                                     ))}
                                 </div>
@@ -209,7 +209,7 @@ function Hostels() {
 
                             {/* Amenities */}
                             <div>
-                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Amenities</label>
+                                <label className="block text-sm font-medium text-gray-700 mb-2">Amenities</label>
                                 <div className="space-y-2 max-h-52 overflow-y-auto">
                                     {AMENITIES.slice(0, 14).map((amenity) => (
                                         <label key={amenity} className="flex items-center gap-2.5 cursor-pointer">
@@ -217,9 +217,9 @@ function Hostels() {
                                                 type="checkbox"
                                                 checked={filters.amenities.includes(amenity)}
                                                 onChange={() => toggleAmenity(amenity)}
-                                                className="text-blue-600 rounded"
+                                                className="text-gray-800 rounded"
                                             />
-                                            <span className="text-sm text-gray-700 dark:text-gray-300">{amenity}</span>
+                                            <span className="text-sm text-gray-700">{amenity}</span>
                                         </label>
                                     ))}
                                 </div>

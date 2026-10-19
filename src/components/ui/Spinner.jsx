@@ -19,7 +19,7 @@ function Spinner({ size = 'md', className }) {
 
     return (
         <svg
-            className={cn('animate-spin text-blue-600', sizeClasses[size], className)}
+            className={cn('animate-spin text-gray-800', sizeClasses[size], className)}
             viewBox="0 0 24 24"
             fill="none"
         >
@@ -38,10 +38,10 @@ function Spinner({ size = 'md', className }) {
  */
 function PageLoader() {
     return (
-        <div className="flex h-screen w-full items-center justify-center bg-white dark:bg-gray-900">
+        <div className="flex h-screen w-full items-center justify-center bg-white">
             <div className="flex flex-col items-center gap-4">
                 <Spinner size="lg" />
-                <p className="text-sm text-gray-500 dark:text-gray-400">Loading...</p>
+                <p className="text-sm text-gray-500">Loading...</p>
             </div>
         </div>
     )

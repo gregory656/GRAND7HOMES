@@ -35,7 +35,7 @@ function UserLayout({ children }) {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+        <div className="min-h-screen bg-white">
             <Navbar />
             <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
                 <div className="flex gap-8">
@@ -43,28 +43,28 @@ function UserLayout({ children }) {
                     {/* Sidebar */}
                     <aside className="hidden md:flex w-64 shrink-0 flex-col gap-2">
                         {/* User info card */}
-                        <div className="rounded-xl border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-800 mb-2">
+                        <div className="rounded-xl border border-gray-200 bg-white p-4 mb-2">
                             <div className="flex items-center gap-3">
-                                <div className="flex h-11 w-11 items-center justify-center rounded-full gradient-primary text-lg font-bold text-white">
+                                <div className="flex h-11 w-11 items-center justify-center rounded-full gradient-primary text-lg font-bold text-gray-700">
                                     {user?.name?.charAt(0).toUpperCase()}
                                 </div>
                                 <div className="min-w-0">
-                                    <p className="font-semibold text-gray-900 dark:text-white truncate">{user?.name}</p>
-                                    <p className="text-xs text-gray-500 dark:text-gray-400 truncate">{user?.email}</p>
+                                    <p className="font-semibold text-gray-900 truncate">{user?.name}</p>
+                                    <p className="text-xs text-gray-500 truncate">{user?.email}</p>
                                 </div>
                             </div>
                         </div>
 
                         {/* Navigation links */}
-                        <nav className="rounded-xl border border-gray-200 bg-white py-2 dark:border-gray-700 dark:bg-gray-800">
+                        <nav className="rounded-xl border border-gray-200 bg-white py-2">
                             {USER_NAV.map(({ icon: Icon, label, to }) => (
                                 <NavLink
                                     key={to}
                                     to={to}
                                     className={({ isActive }) =>
                                         `flex items-center justify-between px-4 py-2.5 text-sm transition-colors ${isActive
-                                            ? 'bg-blue-50 text-blue-600 font-medium dark:bg-blue-900/20 dark:text-blue-400'
-                                            : 'text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:hover:bg-gray-700/50'
+                                            ? 'bg-gray-50 text-gray-800 font-medium'
+                                            : 'text-gray-600 hover:bg-white'
                                         }`
                                     }
                                 >
@@ -75,10 +75,10 @@ function UserLayout({ children }) {
                                     <ChevronRight className="h-3 w-3 opacity-50" />
                                 </NavLink>
                             ))}
-                            <div className="border-t border-gray-100 dark:border-gray-700 mt-1 pt-1">
+                            <div className="border-t border-gray-100 mt-1 pt-1">
                                 <button
                                     onClick={handleLogout}
-                                    className="flex w-full items-center gap-3 px-4 py-2.5 text-sm text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+                                    className="flex w-full items-center gap-3 px-4 py-2.5 text-sm text-red-500 hover:bg-red-50 transition-colors"
                                 >
                                     <LogOut className="h-4 w-4" />
                                     Sign Out

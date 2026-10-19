@@ -1,6 +1,6 @@
 /**
  * AdminLayout.jsx - Layout wrapper for admin dashboard pages
- * Dark sidebar navigation with stats and admin menu.
+ * Light sidebar navigation with stats and admin menu.
  */
 
 import { NavLink, useNavigate } from 'react-router-dom'
@@ -37,29 +37,29 @@ function AdminLayout({ children }) {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col">
+        <div className="min-h-screen bg-white flex flex-col">
             <Navbar />
             <div className="flex flex-1">
 
                 {/* Sidebar */}
-                <aside className={`${sidebarOpen ? 'w-64' : 'w-16'} shrink-0 bg-gray-900 dark:bg-gray-950 transition-all duration-300 hidden md:flex flex-col`}>
+                <aside className={`${sidebarOpen ? 'w-64' : 'w-16'} shrink-0 border-r border-gray-200 bg-white transition-all duration-300 hidden md:flex flex-col`}>
                     {/* Toggle button */}
                     <button
                         onClick={() => setSidebarOpen(!sidebarOpen)}
-                        className="flex items-center justify-center h-12 w-full border-b border-gray-700 text-gray-400 hover:text-white transition-colors"
+                        className="flex items-center justify-center h-12 w-full border-b border-gray-200 text-gray-600 hover:text-gray-900 transition-colors"
                     >
                         {sidebarOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
                     </button>
 
                     {/* Admin info */}
                     {sidebarOpen && (
-                        <div className="p-4 border-b border-gray-700">
+                        <div className="p-4 border-b border-gray-200">
                             <div className="flex items-center gap-3">
-                                <div className="flex h-9 w-9 items-center justify-center rounded-full gradient-primary text-sm font-bold text-white shrink-0">
+                                <div className="flex h-9 w-9 items-center justify-center rounded-full gradient-primary text-sm font-bold text-gray-700 shrink-0">
                                     {user?.name?.charAt(0).toUpperCase()}
                                 </div>
                                 <div className="min-w-0">
-                                    <p className="text-sm font-semibold text-white truncate">{user?.name}</p>
+                                    <p className="text-sm font-semibold text-gray-900 truncate">{user?.name}</p>
                                     <p className="text-xs text-gray-400">Administrator</p>
                                 </div>
                             </div>
@@ -75,8 +75,8 @@ function AdminLayout({ children }) {
                                 title={!sidebarOpen ? label : undefined}
                                 className={({ isActive }) =>
                                     `flex items-center gap-3 px-4 py-3 text-sm transition-colors ${isActive
-                                        ? 'bg-blue-600/20 text-blue-400 border-r-2 border-blue-400'
-                                        : 'text-gray-400 hover:bg-gray-800 hover:text-white'
+                                        ? 'bg-gray-100 text-gray-900 border-r-2 border-gray-400'
+                                        : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
                                     }`
                                 }
                             >
@@ -87,10 +87,10 @@ function AdminLayout({ children }) {
                     </nav>
 
                     {/* Logout */}
-                    <div className="border-t border-gray-700">
+                    <div className="border-t border-gray-200">
                         <button
                             onClick={handleLogout}
-                            className="flex w-full items-center gap-3 px-4 py-3 text-sm text-gray-400 hover:bg-gray-800 hover:text-red-400 transition-colors"
+                            className="flex w-full items-center gap-3 px-4 py-3 text-sm text-gray-600 hover:bg-gray-100 hover:text-red-500 transition-colors"
                         >
                             <LogOut className="h-5 w-5 shrink-0" />
                             {sidebarOpen && 'Sign Out'}

@@ -45,8 +45,8 @@ function BookingDetail() {
                     <Button variant="ghost" size="icon"><ChevronLeft className="h-5 w-5" /></Button>
                 </Link>
                 <div>
-                    <h1 className="text-xl font-bold text-gray-900 dark:text-white">Booking Details</h1>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">Ref: {booking.referenceNo}</p>
+                    <h1 className="text-xl font-bold text-gray-900">Booking Details</h1>
+                    <p className="text-sm text-gray-500">Ref: {booking.referenceNo}</p>
                 </div>
                 <span className={`ml-auto text-xs font-bold rounded-full px-3 py-1.5 ${statusInfo.bg} ${statusInfo.text}`}>{statusInfo.label}</span>
             </div>
@@ -59,8 +59,8 @@ function BookingDetail() {
                         <div className="flex gap-3">
                             <img src={booking.hostelImage} alt="" className="h-16 w-16 rounded-xl object-cover shrink-0" />
                             <div>
-                                <p className="font-semibold text-gray-900 dark:text-white">{booking.hostelName}</p>
-                                <p className="text-sm text-blue-600 dark:text-blue-400">{booking.roomType}</p>
+                                <p className="font-semibold text-gray-900">{booking.hostelName}</p>
+                                <p className="text-sm text-gray-800">{booking.roomType}</p>
                                 <div className="flex items-center gap-1 text-xs text-gray-500 mt-0.5"><MapPin className="h-3 w-3" />{booking.hostelLocation}</div>
                             </div>
                         </div>
@@ -72,8 +72,8 @@ function BookingDetail() {
                         ].map(({ icon: Icon, label, val }) => (
                             <div key={label} className="flex items-center gap-3">
                                 <Icon className="h-4 w-4 text-gray-400 shrink-0" />
-                                <p className="text-xs text-gray-500 dark:text-gray-400 w-20">{label}</p>
-                                <p className="text-sm font-medium text-gray-900 dark:text-white">{val}</p>
+                                <p className="text-xs text-gray-500 w-20">{label}</p>
+                                <p className="text-sm font-medium text-gray-900">{val}</p>
                             </div>
                         ))}
                     </CardContent>
@@ -90,14 +90,14 @@ function BookingDetail() {
                         ].map(({ icon: Icon, label, val }) => (
                             <div key={label} className="flex items-center gap-3">
                                 <Icon className="h-4 w-4 text-gray-400 shrink-0" />
-                                <p className="text-xs text-gray-500 dark:text-gray-400 w-12">{label}</p>
-                                <p className="text-sm font-medium text-gray-900 dark:text-white">{val}</p>
+                                <p className="text-xs text-gray-500 w-12">{label}</p>
+                                <p className="text-sm font-medium text-gray-900">{val}</p>
                             </div>
                         ))}
                         {booking.specialRequests && (
-                            <div className="rounded-lg bg-yellow-50 dark:bg-yellow-900/10 border border-yellow-200 dark:border-yellow-800 p-3 mt-2">
-                                <p className="text-xs font-medium text-yellow-700 dark:text-yellow-400">Special Request</p>
-                                <p className="text-sm text-yellow-600 dark:text-yellow-300 mt-0.5">{booking.specialRequests}</p>
+                            <div className="rounded-lg bg-yellow-50 border border-yellow-200 p-3 mt-2">
+                                <p className="text-xs font-medium text-yellow-700">Special Request</p>
+                                <p className="text-sm text-yellow-600 mt-0.5">{booking.specialRequests}</p>
                             </div>
                         )}
                     </CardContent>
@@ -107,22 +107,22 @@ function BookingDetail() {
                 <Card>
                     <CardHeader><CardTitle className="text-base">Payment Summary</CardTitle></CardHeader>
                     <CardContent className="pt-0 space-y-2 text-sm">
-                        <div className="flex justify-between text-gray-600 dark:text-gray-400">
+                        <div className="flex justify-between text-gray-600">
                             <span>Room charges ({nights} nights)</span>
                             <span>{formatPrice(Math.round(booking.totalAmount / 1.21))}</span>
                         </div>
-                        <div className="flex justify-between text-gray-600 dark:text-gray-400">
+                        <div className="flex justify-between text-gray-600">
                             <span>Taxes (16% VAT)</span>
                             <span>{formatPrice(Math.round(booking.totalAmount * 0.16 / 1.21))}</span>
                         </div>
-                        <div className="flex justify-between text-gray-600 dark:text-gray-400">
+                        <div className="flex justify-between text-gray-600">
                             <span>Service fee (5%)</span>
                             <span>{formatPrice(Math.round(booking.totalAmount * 0.05 / 1.21))}</span>
                         </div>
-                        <div className="flex justify-between font-bold text-gray-900 dark:text-white border-t border-gray-200 dark:border-gray-700 pt-2 mt-2">
-                            <span>Total Paid</span><span className="text-blue-600 dark:text-blue-400">{formatPrice(booking.totalAmount)}</span>
+                        <div className="flex justify-between font-bold text-gray-900 border-t border-gray-200 pt-2 mt-2">
+                            <span>Total Paid</span><span className="text-gray-800">{formatPrice(booking.totalAmount)}</span>
                         </div>
-                        <div className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400 mt-2">
+                        <div className="flex items-center gap-1.5 text-xs text-gray-500 mt-2">
                             <CreditCard className="h-3.5 w-3.5" />Paid via {booking.paymentMethod}
                         </div>
                     </CardContent>
@@ -133,12 +133,12 @@ function BookingDetail() {
                     <CardHeader><CardTitle className="text-base">Booking Timeline</CardTitle></CardHeader>
                     <CardContent className="pt-0">
                         <div className="relative pl-4">
-                            <div className="absolute left-0 top-2 bottom-2 w-0.5 bg-gray-200 dark:bg-gray-700" />
+                            <div className="absolute left-0 top-2 bottom-2 w-0.5 bg-gray-200" />
                             {timeline.map((item, i) => (
                                 <div key={i} className="relative mb-4 last:mb-0">
-                                    <div className={`absolute -left-5 top-1 h-3 w-3 rounded-full border-2 ${item.done ? 'bg-blue-600 border-blue-600' : 'bg-white border-gray-300 dark:bg-gray-800 dark:border-gray-600'}`} />
-                                    <p className={`text-sm font-medium ${item.done ? 'text-gray-900 dark:text-white' : 'text-gray-400'}`}>{item.label}</p>
-                                    <p className="text-xs text-gray-500 dark:text-gray-400">{item.date}</p>
+                                    <div className={`absolute -left-5 top-1 h-3 w-3 rounded-full border-2 ${item.done ? 'bg-gray-300 border-gray-300' : 'bg-white border-gray-300'}`} />
+                                    <p className={`text-sm font-medium ${item.done ? 'text-gray-900' : 'text-gray-400'}`}>{item.label}</p>
+                                    <p className="text-xs text-gray-500">{item.date}</p>
                                 </div>
                             ))}
                         </div>

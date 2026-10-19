@@ -33,15 +33,15 @@ const CATEGORY_DATA = [
 
 function StatCard({ icon: Icon, label, value, sub, trend }) {
     return (
-        <div className="rounded-2xl bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700 p-5">
+        <div className="rounded-2xl bg-white border border-gray-200 p-5">
             <div className="flex items-start justify-between">
                 <div>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">{label}</p>
-                    <p className="text-2xl font-extrabold text-gray-900 dark:text-white mt-1">{value}</p>
+                    <p className="text-sm text-gray-500">{label}</p>
+                    <p className="text-2xl font-extrabold text-gray-900 mt-1">{value}</p>
                     {sub && <p className="text-xs text-green-500 mt-1 flex items-center gap-0.5"><ArrowUpRight className="h-3 w-3" />{sub}</p>}
                 </div>
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl gradient-primary">
-                    <Icon className="h-6 w-6 text-white" />
+                    <Icon className="h-6 w-6 text-gray-700" />
                 </div>
             </div>
         </div>
@@ -52,8 +52,8 @@ function AdminDashboard() {
     return (
         <AdminLayout>
             <div className="mb-6">
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Admin Dashboard</h1>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Overview of platform performance</p>
+                <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
+                <p className="text-sm text-gray-500 mt-1">Overview of platform performance</p>
             </div>
 
             {/* Stats Grid */}
@@ -69,8 +69,8 @@ function AdminDashboard() {
             {/* Charts Row */}
             <div className="grid gap-5 lg:grid-cols-3 mb-6">
                 {/* Revenue Line Chart - This uses Recharts for analytics visualization */}
-                <div className="lg:col-span-2 rounded-2xl bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700 p-5">
-                    <h2 className="font-semibold text-gray-900 dark:text-white mb-4">Revenue (Last 6 Months)</h2>
+                <div className="lg:col-span-2 rounded-2xl bg-white border border-gray-200 p-5">
+                    <h2 className="font-semibold text-gray-900 mb-4">Revenue (Last 6 Months)</h2>
                     <ResponsiveContainer width="100%" height={220}>
                         <LineChart data={REVENUE_DATA}>
                             <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
@@ -83,8 +83,8 @@ function AdminDashboard() {
                 </div>
 
                 {/* Category Pie Chart */}
-                <div className="rounded-2xl bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700 p-5">
-                    <h2 className="font-semibold text-gray-900 dark:text-white mb-4">Hostel Categories</h2>
+                <div className="rounded-2xl bg-white border border-gray-200 p-5">
+                    <h2 className="font-semibold text-gray-900 mb-4">Hostel Categories</h2>
                     <ResponsiveContainer width="100%" height={220}>
                         <PieChart>
                             <Pie data={CATEGORY_DATA} cx="50%" cy="50%" innerRadius={50} outerRadius={80} dataKey="value">
@@ -98,8 +98,8 @@ function AdminDashboard() {
             </div>
 
             {/* Bookings Bar Chart */}
-            <div className="rounded-2xl bg-white border border-gray-200 dark:bg-gray-800 dark:border-gray-700 p-5 mb-6">
-                <h2 className="font-semibold text-gray-900 dark:text-white mb-4">Bookings per Month</h2>
+            <div className="rounded-2xl bg-white border border-gray-200 p-5 mb-6">
+                <h2 className="font-semibold text-gray-900 mb-4">Bookings per Month</h2>
                 <ResponsiveContainer width="100%" height={180}>
                     <BarChart data={REVENUE_DATA}>
                         <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
@@ -117,27 +117,27 @@ function AdminDashboard() {
                 <CardContent className="pt-0 overflow-x-auto">
                     <table className="w-full text-sm">
                         <thead>
-                            <tr className="border-b border-gray-200 dark:border-gray-700">
+                            <tr className="border-b border-gray-200">
                                 {['Reference', 'Guest', 'Hostel', 'Check-in', 'Amount', 'Status', 'Actions'].map((h) => (
-                                    <th key={h} className="py-2.5 px-3 text-left text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{h}</th>
+                                    <th key={h} className="py-2.5 px-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">{h}</th>
                                 ))}
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-gray-100 dark:divide-gray-700/50">
+                        <tbody className="divide-y divide-gray-100">
                             {MOCK_BOOKINGS.map((b) => {
                                 const s = STATUS_COLORS[b.status] || STATUS_COLORS.confirmed
                                 return (
-                                    <tr key={b.id} className="hover:bg-gray-50 dark:hover:bg-gray-700/30 transition-colors">
-                                        <td className="py-3 px-3 font-mono text-xs text-gray-600 dark:text-gray-400">{b.referenceNo}</td>
-                                        <td className="py-3 px-3 font-medium text-gray-900 dark:text-white">{b.guestName}</td>
-                                        <td className="py-3 px-3 text-gray-600 dark:text-gray-400 max-w-[140px] truncate">{b.hostelName}</td>
-                                        <td className="py-3 px-3 text-gray-600 dark:text-gray-400">{formatDate(b.checkIn)}</td>
-                                        <td className="py-3 px-3 font-semibold text-gray-900 dark:text-white">{formatPrice(b.totalAmount)}</td>
+                                    <tr key={b.id} className="hover:bg-white transition-colors">
+                                        <td className="py-3 px-3 font-mono text-xs text-gray-600">{b.referenceNo}</td>
+                                        <td className="py-3 px-3 font-medium text-gray-900">{b.guestName}</td>
+                                        <td className="py-3 px-3 text-gray-600 max-w-[140px] truncate">{b.hostelName}</td>
+                                        <td className="py-3 px-3 text-gray-600">{formatDate(b.checkIn)}</td>
+                                        <td className="py-3 px-3 font-semibold text-gray-900">{formatPrice(b.totalAmount)}</td>
                                         <td className="py-3 px-3">
                                             <span className={`text-xs font-semibold rounded-full px-2.5 py-0.5 ${s.bg} ${s.text}`}>{s.label}</span>
                                         </td>
                                         <td className="py-3 px-3">
-                                            <button className="text-blue-600 hover:underline text-xs flex items-center gap-1"><Eye className="h-3 w-3" />View</button>
+                                            <button className="text-gray-800 hover:underline text-xs flex items-center gap-1"><Eye className="h-3 w-3" />View</button>
                                         </td>
                                     </tr>
                                 )

@@ -45,7 +45,7 @@ function HostelCard({ hostel, onWishlist }) {
 
     return (
         <Link to={`/hostels/${hostel.id}`} className="group block">
-            <div className="rounded-2xl bg-white border border-gray-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 dark:bg-gray-800 dark:border-gray-700">
+            <div className="rounded-2xl bg-white border border-gray-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
 
                 {/* Image */}
                 <div className="relative h-52 overflow-hidden">
@@ -83,21 +83,21 @@ function HostelCard({ hostel, onWishlist }) {
                 {/* Card Body */}
                 <div className="p-4">
                     {/* Location */}
-                    <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400 mb-1.5">
-                        <MapPin className="h-3.5 w-3.5 text-blue-500" />
+                    <div className="flex items-center gap-1 text-xs text-gray-500 mb-1.5">
+                        <MapPin className="h-3.5 w-3.5 text-gray-600" />
                         {hostel.location}
                     </div>
 
                     {/* Name */}
-                    <h3 className="font-semibold text-gray-900 dark:text-white text-base leading-tight mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                    <h3 className="font-semibold text-gray-900 text-base leading-tight mb-2 group-hover:text-gray-800 transition-colors line-clamp-2">
                         {hostel.name}
                     </h3>
 
                     {/* Rating */}
                     <div className="flex items-center gap-1.5 mb-3">
                         <div className="flex items-center gap-0.5">{renderStars(hostel.rating)}</div>
-                        <span className="text-sm font-semibold text-gray-900 dark:text-white">{hostel.rating}</span>
-                        <span className="text-xs text-gray-500 dark:text-gray-400">({hostel.reviewCount} reviews)</span>
+                        <span className="text-sm font-semibold text-gray-900">{hostel.rating}</span>
+                        <span className="text-xs text-gray-500">({hostel.reviewCount} reviews)</span>
                     </div>
 
                     {/* Amenities (first 4) */}
@@ -105,13 +105,13 @@ function HostelCard({ hostel, onWishlist }) {
                         {hostel.amenities.slice(0, 4).map((amenity) => (
                             <span
                                 key={amenity}
-                                className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-gray-600 dark:bg-gray-700 dark:text-gray-400"
+                                className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-gray-600"
                             >
                                 {amenity}
                             </span>
                         ))}
                         {hostel.amenities.length > 4 && (
-                            <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-gray-500 dark:bg-gray-700">
+                            <span className="rounded-full bg-gray-100 px-2.5 py-0.5 text-xs text-gray-500">
                                 +{hostel.amenities.length - 4}
                             </span>
                         )}
@@ -120,10 +120,10 @@ function HostelCard({ hostel, onWishlist }) {
                     {/* Price + Action */}
                     <div className="flex items-center justify-between">
                         <div>
-                            <span className="text-lg font-bold text-blue-600 dark:text-blue-400">
+                            <span className="text-lg font-bold text-gray-800">
                                 {formatPrice(hostel.pricePerNight)}
                             </span>
-                            <span className="text-xs text-gray-500 dark:text-gray-400"> / night</span>
+                            <span className="text-xs text-gray-500"> / night</span>
                         </div>
                         <Button size="sm" variant="gradient" className="shrink-0">
                             View Details
