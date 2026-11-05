@@ -64,3 +64,18 @@ export async function simulatePayment(paymentData) {
         }, 2000) // Simulate 2s processing time
     })
 }
+
+/**
+ * Initiate an M-Pesa STK Push
+ * REST API: POST /api/mpesa/stkpush
+ * @param {string} phone - Customer phone number
+ * @param {number} amount - Payment amount in KES
+ */
+export async function initiateMpesaPayment(phone, amount) {
+    const response = await api.post('/mpesa/stkpush', {
+        phone,
+        amount,
+    })
+
+    return response.data
+}

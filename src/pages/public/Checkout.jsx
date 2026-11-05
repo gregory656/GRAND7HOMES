@@ -16,7 +16,10 @@ import Button from '../../components/ui/Button'
 import Input from '../../components/ui/Input'
 import { useBooking } from '../../contexts/BookingContext'
 import { useAuth } from '../../contexts/AuthContext'
-import { simulatePayment } from '../../services/paymentService'
+import {
+    simulatePayment,
+    initiateMpesaPayment
+} from '../../services/paymentService'
 import { createBooking } from '../../services/bookingService'
 import { formatPrice, generateBookingRef } from '../../lib/utils'
 
@@ -81,6 +84,7 @@ function Checkout() {
     const [processing, setProcessing] = useState(false)
     const [bookingRef, setBookingRef] = useState('')
     const [copied, setCopied] = useState(false)
+    const [paymentMessage, setPaymentMessage] = useState('')
 
     // Step 1: Guest Info form — This uses Zod for form validation and React Hook Form
     const guestForm = useForm({ resolver: zodResolver(guestSchema), defaultValues: { firstName: user?.name?.split(' ')[0] || '', email: user?.email || '', method: 'card' } })
@@ -88,29 +92,91 @@ function Checkout() {
 
     const onGuestSubmit = (data) => { setGuestData(data); setStep(2) }
 
-    const onPaymentSubmit = async () => {
-        setProcessing(true)
-        try {
-            // Payment simulation — replace with real Stripe/PayPal when keys are available
-            await simulatePayment({ method: payMethod, amount: total })
-            const ref = generateBookingRef()
-            setBookingRef(ref)
-            // Create booking record via REST API
-            await createBooking({
-                ...guestData,
-                items: bookingItems,
-                total,
-                referenceNo: ref,
-                paymentMethod: payMethod,
-            })
-            clearBooking()
-            setStep(3)
-        } catch (err) {
-            console.error('Payment failed:', err)
-        } finally {
-            setProcessing(false)
+   
+const onPaymentSubmit = async () => {
+    setProcessing(true)
+    setPaymentMessage('')
+
+    try {
+        // REAL M-PESA PAYMENT
+        if (payMethod === 'mpesa') {
+            const phoneInput = payForm.getValues('mpesaPhone')?.trim()
+
+            if (!phoneInput) {
+                setPaymentMessage('Please enter your M-Pesa phone number.')
+                return
+            }
+
+            // Normalize Kenyan phone numbers
+            let phone = phoneInput.replace(/[\s+-]/g, '')
+
+            if (phone.startsWith('0')) {
+                phone = '254' + phone.substring(1)
+            }
+
+            if (!/^254[17]\d{8}$/.test(phone)) {
+                setPaymentMessage(
+                    'Enter a valid Kenyan number, e.g. 0712345678'
+                )
+                return
+            }
+
+            // Send request to Express backend, then Daraja
+            const result = await initiateMpesaPayment(
+                phone,
+                Math.round(total)
+            )
+
+            console.log('M-Pesa STK response:', result)
+
+            setPaymentMessage(
+                result.CustomerMessage ||
+                result.customerMessage ||
+                result.ResponseDescription ||
+                result.message ||
+                'STK Push initiated. Check your phone and enter your M-Pesa PIN.'
+            )
+
+            // IMPORTANT:
+            // Do not create a booking or mark payment as complete here.
+            // Wait for Daraja callback confirmation.
+
+            return
         }
+
+        // EXISTING SIMULATED PAYMENT FOR OTHER METHODS
+        await simulatePayment({
+            method: payMethod,
+            amount: total
+        })
+
+        const ref = generateBookingRef()
+
+        setBookingRef(ref)
+
+        await createBooking({
+            ...guestData,
+            items: bookingItems,
+            total,
+            referenceNo: ref,
+            paymentMethod: payMethod,
+        })
+
+        clearBooking()
+        setStep(3)
+
+    } catch (err) {
+        console.error('Payment failed:', err)
+
+        setPaymentMessage(
+            err.message || 'Payment failed. Please try again.'
+        )
+
+    } finally {
+        setProcessing(false)
     }
+}
+
 
     const copyRef = () => {
         navigator.clipboard.writeText(bookingRef)
@@ -189,9 +255,23 @@ function Checkout() {
                                         </div>
                                     </div>
                                 )}
+                                
                                 {payMethod === 'mpesa' && (
-                                    <Input label="M-Pesa Phone Number" placeholder="+254 700 000 000" {...payForm.register('mpesaPhone')} />
-                                )}
+    <div className="space-y-3">
+        <Input
+            label="M-Pesa Phone Number"
+            placeholder="0712345678"
+            type="tel"
+            {...payForm.register('mpesaPhone')}
+        />
+
+        {paymentMessage && (
+            <div className="rounded-lg bg-green-50 border border-green-200 p-3 text-sm text-green-700">
+                {paymentMessage}
+            </div>
+        )}
+    </div>
+)}
                                 {payMethod === 'paypal' && (
                                     <div className="rounded-xl bg-gray-50 p-4 text-center text-sm text-gray-600">
                                         You will be redirected to PayPal to complete your payment securely.
